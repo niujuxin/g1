@@ -5,16 +5,10 @@ import json
 def main():
     st.set_page_config(page_title="g1 prototype", page_icon="🧠", layout="wide")
     
-    st.title("g1: Using Llama-3.1 70b on Groq to create o1-like reasoning chains")
-    
-    st.markdown("""
-    This is an early prototype of using prompting to create o1-like reasoning chains to improve output accuracy. It is not perfect and accuracy has yet to be formally evaluated. It is powered by Groq so that the reasoning step is fast!
-                
-    Open source [repository here](https://github.com/bklieger-groq)
-    """)
+    st.title("O1-Like Reasoning Chains Following [g1](https://github.com/bklieger-groq/g1)")
     
     # Text input for user query
-    user_query = st.text_input("Enter your query:", placeholder="e.g., How many 'R's are in the word strawberry?")
+    user_query = st.text_area("Enter your query:", placeholder="e.g., How many 'R's are in the word strawberry?")
     
     if user_query:
         st.write("Generating response...")
@@ -54,6 +48,7 @@ def main():
             # Only show total time when it's available at the end
             if total_thinking_time is not None:
                 time_container.markdown(f"**Total thinking time: {total_thinking_time:.2f} seconds**")
+
 
 if __name__ == "__main__":
     main()
